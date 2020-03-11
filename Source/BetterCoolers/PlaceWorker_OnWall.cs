@@ -1,41 +1,50 @@
-﻿using Verse;
+﻿using System;
+using Verse;
 
 namespace BetterCV
 {
 
-    public class PlaceWorker_OnWall : PlaceWorker
-    {
+	public class PlaceWorker_OnWall : PlaceWorker
+	{
 
-        public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null)
-        {
-            IntVec3 c = loc;
-
-            Building support = c.GetEdifice(map);
-            if (support == null)
-            {
-                return (AcceptanceReport)("MessagePlacementOnSupport".Translate());
-            }
-
-            if (support.def == null)
+		public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null, Thing thing = null)
+		{
+			Building edifice = GridsUtility.GetEdifice(loc, map);
+			bool flag = edifice == null;
+			AcceptanceReport result;
+			if (flag)
 			{
-                return (AcceptanceReport)("MessagePlacementOnSupport".Translate());
-            }
-
-			if (support.def.IsSmoothed)
-			{
-				return AcceptanceReport.WasAccepted;
+				result = Translator.Translate("MessagePlacementOnSupport");
 			}
-
-			if (support.def.graphicData == null)
+			else
 			{
-				return (AcceptanceReport)("MessagePlacementOnSupport".Translate());
+				bool flag2 = edifice.def == null;
+				if (flag2)
+				{
+					result = Translator.Translate("MessagePlacementOnSupport");
+				}
+				else
+				{
+					bool isSmoothed = edifice.def.IsSmoothed;
+					if (isSmoothed)
+					{
+						result = AcceptanceReport.WasAccepted;
+					}
+					else
+					{
+						bool flag3 = edifice.def.graphicData == null;
+						if (flag3)
+						{
+							result = Translator.Translate("MessagePlacementOnSupport");
+						}
+						else
+						{
+							result = (((edifice.def.graphicData.linkFlags) != 0) ? AcceptanceReport.WasAccepted : Translator.Translate("MessagePlacementOnSupport"));
+						}
+					}
+				}
 			}
-
-            return (support.def.graphicData.linkFlags & (LinkFlags.Wall)) != 0
-                ? AcceptanceReport.WasAccepted
-                    : (AcceptanceReport)("MessagePlacementOnSupport".Translate());
-        }
-
-    }
-
+			return result;
+		}
+	}
 }

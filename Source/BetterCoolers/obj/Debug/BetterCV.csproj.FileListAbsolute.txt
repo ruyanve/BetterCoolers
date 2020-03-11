@@ -6,3 +6,6 @@ E:\Rimworld\My Mods\1.0\RimWorld2059Win64\Mods\BetterCoolers\Source\BetterCooler
 E:\Rimworld\My Mods\1.0\RimWorld2059Win64\Mods\BetterCoolers\Source\BetterCoolers\obj\Debug\BetterCV.csproj.CoreCompileInputs.cache
 E:\Rimworld\My Mods\1.0\RimWorld2059Win64\Mods\BetterCoolers\Source\BetterCoolers\obj\Debug\BetterCV.csproj.CopyComplete
 E:\Rimworld\My Mods\1.0\RimWorld2059Win64\Mods\BetterCoolers\Source\BetterCoolers\obj\Debug\BetterCV.dll
+D:\Tools\Steam\steamapps\common\RimWorld\Mods\BetterCoolers\Source\BetterCoolers\obj\Debug\BetterCV.csprojAssemblyReference.cache
+D:\Tools\Steam\steamapps\common\RimWorld\Mods\BetterCoolers\Source\BetterCoolers\obj\Debug\BetterCV.dll
+D:\Tools\Steam\steamapps\common\RimWorld\Mods\BetterCoolers\Assemblies\BetterCV.dll
